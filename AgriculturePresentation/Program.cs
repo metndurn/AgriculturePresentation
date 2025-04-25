@@ -1,7 +1,17 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccesLayer.Abstract;
+using DataAccesLayer.Concrete.EntityFramework;
+using DataAccesLayer.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IServiceService, ServiceManager>();//burada service manager sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IServiceDal, EfServiceDal>();//burada service dal sýnýfý eklenmiþ oldu
+builder.Services.AddDbContext<AgricultureContext>();//bununla birlikte context sýnýfý da eklenmiþ oldu.
 
 var app = builder.Build();
 
