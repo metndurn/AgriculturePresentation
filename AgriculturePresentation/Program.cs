@@ -12,6 +12,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IServiceService, ServiceManager>();//burada service manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IServiceDal, EfServiceDal>();//burada service dal sýnýfý eklenmiþ oldu
 builder.Services.AddDbContext<AgricultureContext>();//bununla birlikte context sýnýfý da eklenmiþ oldu.
+//builder.Services.AddScoped<ITeamService, TeamManager>();
 
 var app = builder.Build();
 
