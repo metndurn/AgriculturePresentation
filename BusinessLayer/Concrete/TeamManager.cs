@@ -41,19 +41,7 @@ namespace BusinessLayer.Concrete
 
 		public void Update(Team t)//guncelleme
 		{
-			//if (t.PersonelName.Length <= 3)
-			//{
-			//	throw new Exception("Personel adı en az 3 karakter olmalıdır.");
-			//}
-			//if (t.Title.Length <= 3)
-			//{
-			//	throw new Exception("Title en az 3 karakter olmalıdır.");
-			//}
-			//if (t.ImageUrl.Length <= 3)
-			//{
-			//	throw new Exception("ImageUrl en az 3 karakter olmalıdır.");
-			//}
-				_teamDal.Update(t);
+			_teamDal.Update(t);
 		}
 	}
 }
