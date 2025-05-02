@@ -1,14 +1,16 @@
 ﻿@model EntityLayer.Concrete.Team
 @{
-    ViewData["Title"] = "AddTeam";
+    ViewData["Title"] = "UpdateTeam";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Yeni Takim Arkadasi Kaydi</h4>
+            <h4 class="card-title">Takim Arkadasi Bilgi Güncelleme Sayfasi</h4>
             <form class="forms-sample" method="post">
                 <div class="form-group">
+                    @Html.HiddenFor(x => x.Id)
                     <label for="exampleInputName1">Adi Soyadi</label>
                     <span asp-validation-for="PersonelName" class="text-danger"></span>
                     <input type="text" class="form-control" placeholder="adsoyad" asp-for="PersonelName">
@@ -39,9 +41,10 @@
                     <label for="exampleInputEmail3">Web Site</label>
                     <input type="text" class="form-control" placeholder="Web Site" asp-for="WebsiteUrl">
                 </div>
-                
+
                 <button type="submit" class="btn btn-outline-info">Kaydet</button>
             </form>
         </div>
     </div>
 </div>
+
