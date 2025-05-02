@@ -14,6 +14,11 @@ builder.Services.AddScoped<IServiceDal, EfServiceDal>();//burada service dal sýn
 builder.Services.AddDbContext<AgricultureContext>();//bununla birlikte context sýnýfý da eklenmiþ oldu.
 builder.Services.AddScoped<ITeamService, TeamManager>();//burada team manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<ITeamDal, EfTeamDal>();//burada team dal sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();//burada announcement manager sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IImageService, ImageManager>();//burada announcement manager sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IImageDal, EfImageDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+
 
 var app = builder.Build();
 

@@ -25,6 +25,8 @@ namespace AgriculturePresentation.Controllers
 		[HttpPost]
 		public IActionResult AddAnnouncement(Announcement announcement)//ekleme
 		{
+			announcement.Date = DateTime.Parse(DateTime.Now.ToShortDateString());//tarih ekleme
+			announcement.Status = false;//durum ekleme
 			_announcementService.Insert(announcement);
 			return RedirectToAction("Index");
 		}

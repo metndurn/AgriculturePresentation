@@ -18,9 +18,9 @@ namespace BusinessLayer.Concrete
 			_announcementDal = announcementDal;
 		}
 
-		public void Delete(Announcement entity)
+		public void Delete(Announcement t)
 		{
-			_announcementDal.Delete(entity);
+			_announcementDal.Delete(t);
 		}
 
 		public Announcement GetById(int id)
@@ -33,14 +33,14 @@ namespace BusinessLayer.Concrete
 			return _announcementDal.GetListAll();
 		}
 
-		public void Insert(Announcement entity)
+		public void Insert(Announcement t)
 		{
-			_announcementDal.Insert(entity);
+			_announcementDal.Insert(t);
 		}
 
-		public void Update(Announcement entity)
+		public void Update(Announcement t)
 		{
-			_announcementDal.Update(entity);
+			_announcementDal.Update(t);
 		}
 	}
 }
