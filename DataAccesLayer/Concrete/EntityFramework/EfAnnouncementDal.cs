@@ -1,5 +1,6 @@
 ﻿using DataAccesLayer.Abstract;
 using DataAccesLayer.Concrete.Repository;
+using DataAccesLayer.Contexts;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,21 @@ namespace DataAccesLayer.Concrete.EntityFramework
 {
 	public class EfAnnouncementDal : GenericRepository<Announcement>, IAnnouncementDal
 	{
-		
+		/*abstract (IAnnouncementDal) tarafında eklenen metodları burada implemente ettik*/
+		public void AnnouncementStatusToFalse(int id)
+		{
+			using var context = new AgricultureContext();
+			Announcement p = context.Announcements.Find(id);
+			p.Status = false;
+			context.SaveChanges();
+		}
+
+		public void AnnouncementStatusToTrue(int id)
+		{
+			using var context = new AgricultureContext();
+			Announcement p = context.Announcements.Find(id);
+			p.Status = true;
+			context.SaveChanges();
+		}
 	}
 }

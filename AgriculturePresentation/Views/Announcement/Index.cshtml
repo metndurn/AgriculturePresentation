@@ -16,10 +16,9 @@
                             <th>Baslik</th>
                             <th>Açiklama</th>
                             <th>Tarih</th>
-                            <th>Aktif Yap</th>
-                            <th>Pasif Yap</th>
                             <th>Sil</th>
                             <th>Guncelle</th>
+                            <th>Durum</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,11 +29,24 @@
                                 <td>@item.Title</td>
                                 <td>@item.Description</td>
                                 <td>@item.Date</td>
-                                @* <td>@item.Status</td> *@
-                                <td><a href="/Announcement/UpdateAnnouncement/@item.Id" class="btn btn-outline-warning">Aktif Yap</a></td>
-                                <td><a href="/Announcement/UpdateAnnouncement/@item.Id" class="btn btn-outline-secondary">Pasif Yap</a></td>
-                                <td><a href="/Announcement/DeleteAnnouncement/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-                                <td><a href="/Announcement/UpdateAnnouncement/@item.Id" class="btn btn-outline-success">Guncelle</a></td>
+                                <td>
+                                    <a href="/Announcement/DeleteAnnouncement/@item.Id" class="btn btn-outline-danger">Sil</a>
+                                </td>
+                                <td>
+                                    <a href="/Announcement/UpdateAnnouncement/@item.Id" class="btn btn-outline-success">Guncelle</a>
+                                </td>
+                               @if (item.Status == true)
+                               {
+                                    <td>
+                                        <a href="/Announcement/AnnouncementStatusToTrue/@item.Id" class="btn btn-outline-warning">Aktif Yap</a> 
+                                    </td>
+                               }
+                               else
+                               {
+                                    <td>
+                                        <a href="/Announcement/AnnouncementStatusToFalse/@item.Id" class="btn btn-outline-secondary">Pasif Yap</a>
+                                    </td>
+                               }
                             </tr>
                         }
                     </tbody>

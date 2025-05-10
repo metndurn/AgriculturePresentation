@@ -12,10 +12,20 @@ namespace BusinessLayer.Concrete
 	public class AnnouncementManager : IAnnouncementService
 	{
 		private readonly IAnnouncementDal _announcementDal;
-
+		/*abstract (IAnnouncementDal) tarafında eklenen metodları burada implemente ettik*/
 		public AnnouncementManager(IAnnouncementDal announcementDal)
 		{
 			_announcementDal = announcementDal;
+		}
+
+		public void AnnouncementStatusToFalse(int id)
+		{
+			_announcementDal.AnnouncementStatusToFalse(id);
+		}
+
+		public void AnnouncementStatusToTrue(int id)
+		{
+			_announcementDal.AnnouncementStatusToTrue(id);
 		}
 
 		public void Delete(Announcement t)
