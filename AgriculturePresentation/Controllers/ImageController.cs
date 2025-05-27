@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace AgriculturePresentation.Controllers
 {
@@ -26,8 +28,21 @@ namespace AgriculturePresentation.Controllers
 		[HttpPost]
 		public IActionResult AddImage(Image image)
 		{
-			_imageService.Insert(image);
-			return RedirectToAction("Index");
+			ImageValidator validationRules = new ImageValidator();
+			ValidationResult result = validationRules.Validate(image);
+			if (result.IsValid)
+			{
+				_imageService.Insert(image);
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+				}
+			}
+			return View();
 		}
 		public IActionResult DeleteImage(int id)
 		{
@@ -44,8 +59,21 @@ namespace AgriculturePresentation.Controllers
 		[HttpPost]
 		public IActionResult UpdateImage(Image image)
 		{
-			_imageService.Update(image);
-			return RedirectToAction("Index");
+			ImageValidator validationRules = new ImageValidator();
+			ValidationResult result = validationRules.Validate(image);
+			if (result.IsValid)
+			{
+				_imageService.Insert(image);
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+				}
+			}
+			return View();
 		}
 	}
 }
