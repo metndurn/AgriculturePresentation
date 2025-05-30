@@ -1,8 +1,11 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccesLayer.Abstract;
 using DataAccesLayer.Concrete.EntityFramework;
 using DataAccesLayer.Contexts;
+using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,9 @@ builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();//burada
 builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IImageService, ImageManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IImageDal, EfImageDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+//builder.Services.AddControllersWithViews()
+//	.AddFluentValidation(fv =>
+//		fv.RegisterValidatorsFromAssemblyContaining<ImageValidator>());
 
 
 var app = builder.Build();

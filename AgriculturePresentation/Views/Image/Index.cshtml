@@ -16,7 +16,7 @@
                         <thead>
                             <tr class="border-danger">
                                 <th>#</th>
-                                <th>Resim</th>
+                                <th>Başlık</th>
                                 <th>Sil</th>
                                 <th>Guncelle</th>
                             </tr>
@@ -25,15 +25,8 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.Id</td>
-                                    @* <td class="py-1">
-                                        <img src="/images/@item.ImageUrl" alt="image" />
-                                    </td> *@
-                                    <td class="py-1">
-                                        <img src="~/MajesticAdmin-Free-Bootstrap-Admin-Template-master/template/images/faces/face1.jpg" alt="image" />
-                                    </td>
+                                    <td class="py-1"><img src="@item.ImageUrl" alt="image" /></td>
                                     <td>@item.Title</td>
-                                    <td>@item.Description</td>
                                     <td><a href="/Image/DeleteImage/@item.Id" class="btn btn-outline-danger">Sil</a></td>
                                     <td><a href="/Image/UpdateImage/@item.Id" class="btn btn-outline-warning">Guncelle</a></td>
                                 </tr>
@@ -52,7 +45,7 @@
                 }
             </div>
             <br />
-            <a href="/Image/AddImage" class="btn btn-outline-info">Yeni Personel Ekle</a>
+            <a href="/Image/AddImage" class="btn btn-outline-info">Yeni Görsel Ekle</a>
         </div>
     </div>
 </div>

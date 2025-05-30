@@ -1,8 +1,10 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.ValidationRules;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace AgriculturePresentation.Controllers
 {
@@ -63,7 +65,7 @@ namespace AgriculturePresentation.Controllers
 			ValidationResult result = validationRules.Validate(image);
 			if (result.IsValid)
 			{
-				_imageService.Insert(image);
+				_imageService.Update(image);
 				return RedirectToAction("Index");
 			}
 			else

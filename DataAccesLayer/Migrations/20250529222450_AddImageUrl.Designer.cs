@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccesLayer.Migrations
 {
     [DbContext(typeof(AgricultureContext))]
-    [Migration("20250527210234_mig_add_image_columns")]
-    partial class mig_add_image_columns
+    [Migration("20250529222450_AddImageUrl")]
+    partial class AddImageUrl
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

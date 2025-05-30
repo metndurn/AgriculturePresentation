@@ -5,7 +5,7 @@
 namespace DataAccesLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_add_image_columns : Migration
+    public partial class AddImageUrl : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
