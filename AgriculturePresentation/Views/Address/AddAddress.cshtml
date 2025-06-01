@@ -1,12 +1,11 @@
 ﻿@model EntityLayer.Concrete.Address
 @{
-    ViewData["Title"] = "UpdateAddress";
+    ViewData["Title"] = "AddAddress";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
-<div class="col-12 grid-margin stretch-card">
+}<div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Adres Bilgi Güncelleme Sayfasi</h4>
+            <h4 class="card-title">Adres Bilgi Ekleme Sayfasi</h4>
             <form class="forms-sample" method="post">
                 <div class="form-group">
                     @Html.HiddenFor(x => x.Id)
