@@ -45,8 +45,6 @@ namespace AgriculturePresentation.Controllers
 			return View();
 		}
 
-
-
 		[HttpGet]
 		public IActionResult UpdateAddress(int id)
 		{
