@@ -25,6 +25,8 @@ builder.Services.AddScoped<IAddressService, AddresManager>();//burada announceme
 builder.Services.AddScoped<IAddressDal, EfAddressDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IContactService, ContactManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IContactDal, EfContactDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();//burada announcement manager sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 
 
 

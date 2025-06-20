@@ -21,5 +21,6 @@ namespace DataAccesLayer.Contexts
 		public DbSet<Contact> Contacts { get; set; }
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Announcement> Announcements { get; set; }
+		public DbSet<SocialMedia> SocialMedias { get; set; }//yeni tablo olarak ekledık
 	}
 }

@@ -5,7 +5,7 @@ namespace AgriculturePresentation.ViewComponents
 {
 	public class _TopAddressView : ViewComponent
 	{
-		/*dinamik isler yapabilmek için bunlar tazılması lazım unutma*/
+		/*dinamik isler yapabilmek için bunlar yazılması lazım unutma*/
 		private readonly IAddressService _addressService;
 
 		public _TopAddressView(IAddressService addressService)

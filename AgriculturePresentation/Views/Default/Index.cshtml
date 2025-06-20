@@ -17,14 +17,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header">
 		<div class="container">
 			@await Component.InvokeAsync("_TopAddressView")
-			<div class="w3l_header_right">
-				<div class="w3ls-social-icons text-left">
-					<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-					<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-					<a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
-					<a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-				</div>
-			</div>
+			
+			@await Component.InvokeAsync("_SocialMediaView")
+
 			<div class="clearfix"> </div>
 		</div>
 	</div>
