@@ -16,6 +16,7 @@ namespace DataAccesLayer.Contexts
 			optionsBuilder.UseSqlServer("Server=.;Database=AgricultureDB;Integrated Security=True;TrustServerCertificate=True;");
 		}
 		public DbSet<Address> Addresses { get; set; }
+		public DbSet<About> Abouts { get; set; }//sonradan eklendi
 		public DbSet<Service> Services { get; set; }
 		public DbSet<Team> Teams { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
