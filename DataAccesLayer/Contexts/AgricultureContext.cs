@@ -23,5 +23,6 @@ namespace DataAccesLayer.Contexts
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Announcement> Announcements { get; set; }
 		public DbSet<SocialMedia> SocialMedias { get; set; }//yeni tablo olarak ekledık
+		public DbSet<Admin> Admins { get; set; }//yeni tablo olarak ekledık
 	}
 }
