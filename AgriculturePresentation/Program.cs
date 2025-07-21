@@ -21,7 +21,7 @@ builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();//burada
 builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IImageService, ImageManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IImageDal, EfImageDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAddressService, AddresManager>();//burada announcement manager sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IAddressService, AddressManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IAddressDal, EfAddressDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IContactService, ContactManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IContactDal, EfContactDal>();//burada announcement dal sýnýfý eklenmiþ oldu

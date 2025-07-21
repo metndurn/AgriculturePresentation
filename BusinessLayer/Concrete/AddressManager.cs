@@ -9,38 +9,37 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-	public class AddresManager : IAddressService // IAddressService interface'ini implement eden AddresManager sınıfı
+	public class AddressManager : IAddressService // IAddressService interface'ini implement eden AddresManager sınıfı
 	{
-		private readonly IAddressDal _addresDal;
-
-		public AddresManager(IAddressDal addresDal)
+		private readonly IAddressDal _addressDal;
+		public AddressManager(IAddressDal addressDal)
 		{
-			_addresDal = addresDal;
+			_addressDal = addressDal;
 		}
 
 		public void Delete(Address t)
 		{
-			_addresDal.Delete(t);
+			_addressDal.Delete(t);
 		}
 
 		public Address GetById(int id)
 		{
-			return _addresDal.GetById(id);
+			return _addressDal.GetById(id);
 		}
 
 		public List<Address> GetListAll()
 		{
-			return _addresDal.GetListAll();
+			return _addressDal.GetListAll();
 		}
 
 		public void Insert(Address t)
 		{
-			_addresDal.Insert(t);
+			_addressDal.Insert(t);
 		}
 
 		public void Update(Address t)
 		{
-			_addresDal.Update(t);
+			_addressDal.Update(t);
 		}
 	}
 }

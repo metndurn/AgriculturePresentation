@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
-{	public class Address
+{	
+	public class Address
 	{
 		public int Id { get; set; }
 		public string Description1 { get; set; }
