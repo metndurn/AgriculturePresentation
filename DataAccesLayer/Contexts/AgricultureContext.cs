@@ -24,5 +24,7 @@ namespace DataAccesLayer.Contexts
 		public DbSet<Announcement> Announcements { get; set; }
 		public DbSet<SocialMedia> SocialMedias { get; set; }//yeni tablo olarak ekledık
 		public DbSet<Admin> Admins { get; set; }//yeni tablo olarak ekledık
+
+		public DbSet<Product> Products { get; set; }
 	}
 }

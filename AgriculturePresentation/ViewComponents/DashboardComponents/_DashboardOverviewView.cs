@@ -20,7 +20,7 @@ namespace AgriculturePresentation.ViewComponents.DashboardComponents
 			ViewBag.urunPazarlama = c.Teams.Where(x => x.Title == "Ürün Pazarlama").Select(y=>y.PersonelName).FirstOrDefault();
 			ViewBag.bakliyatYonetimi = c.Teams.Where(x => x.Title == "Bakliyat Yönetimi").Select(y=>y.PersonelName).FirstOrDefault();
 			ViewBag.sutUreticisi = c.Teams.Where(x => x.Title == "Süt Üreticisi").Select(y=>y.PersonelName).FirstOrDefault();
-			ViewBag.GubreYonetimi = c.Teams.Where(x => x.Title == "Gübre Yönetimi").Select(y=>y.PersonelName).FirstOrDefault();
+			ViewBag.lojistikYonetimi = c.Teams.Where(x => x.Title == "Lojistik Yönetimi").Select(y=>y.PersonelName).FirstOrDefault();
 			return View("/Views/Shared/DashboardComponents/_DashboardOverviewView/Default.cshtml");
 		}
 	}

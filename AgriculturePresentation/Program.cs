@@ -4,6 +4,8 @@ using BusinessLayer.ValidationRules;
 using DataAccesLayer.Abstract;
 using DataAccesLayer.Concrete.EntityFramework;
 using DataAccesLayer.Contexts;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 
@@ -31,6 +33,8 @@ builder.Services.AddScoped<IAboutService, AboutManager>();//burada announcement 
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IAdminService, AdminManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IAdminDal, EfAdminDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IProductService, ProductManager>();//burada announcement manager sýnýfý eklenmiþ oldu
+builder.Services.AddScoped<IProductDal, EfProductDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 
 
 

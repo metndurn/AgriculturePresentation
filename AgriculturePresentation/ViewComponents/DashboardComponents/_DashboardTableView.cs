@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AgriculturePresentation.ViewComponents.DashboardComponents
 {
 	public class _DashboardTableView :  ViewComponent
 	{
-		public IViewComponentResult Invoke()
+		private readonly IContactService _contactService;
+
+		public _DashboardTableView(IContactService contactService)
 		{
-			return View("/Views/Shared/DashboardComponents/_DashboardTableView/Default.cshtml");
+			_contactService = contactService;
+		}
+
+		public IViewComponentResult Invoke()//veriler listelenirken view kısmına virgul ile degısken tanımlanıp gidebilir
+		{
+			var contacts = _contactService.GetListAll();
+			return View("/Views/Shared/DashboardComponents/_DashboardTableView/Default.cshtml",contacts);
 		}
 	}
 }
