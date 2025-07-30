@@ -38,7 +38,7 @@ namespace AgriculturePresentation.Controllers
 		public IActionResult EditAdmin(int id)
 		{
 			var value = _adminService.GetById(id);
-			return View(value);
+			return View("EditAdmin", value);
 		}
 		[HttpPost]
 		public IActionResult EditAdmin(Admin admin)//güncelleme metodu
