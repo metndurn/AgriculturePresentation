@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.Contexts
 {
-	/*katmanlı yapılarda referans ıslemlerı olmadan buraların bır anlamı yok bunu unutma*/
-	public class AgricultureContext : DbContext
+	/*katmanlı yapılarda referans ıslemlerı olmadan buraların bır anlamı yok bunu unutma
+	 dbcontext kısmı sılınıp yerine identitydbcontext eklendi veritabanında tablolar yok bunları migration
+	üzerinden getirecegiz*/
+	public class AgricultureContext : IdentityDbContext
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

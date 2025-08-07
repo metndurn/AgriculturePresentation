@@ -39,11 +39,10 @@ namespace AgriculturePresentation.Controllers
 			var bytes = excelPackage.GetAsByteArray();//Excel dosyasını baytlara çevirme işlemi dosyaların indirilmesi için gerekli
 			return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "BakliyatRaporu.xlsx");
 		}
-
 		public List<ContactModel> ContactList()//contactlist sayfası için bir action metodu
 		{
 			List<ContactModel> contactModels = new List<ContactModel>();
-			using(var context = new AgricultureContext())// AgricultureContext sınıfından bir context nesnesi oluşturuyoruz
+			using (var context = new AgricultureContext())// AgricultureContext sınıfından bir context nesnesi oluşturuyoruz
 			{
 				contactModels = context.Contacts.Select(x => new ContactModel// ContactModel sınıfından bir liste oluşturuyoruz
 				{// x.ContactModel sınıfından bir nesne oluşturuyoruz
@@ -56,7 +55,6 @@ namespace AgriculturePresentation.Controllers
 			}
 			return contactModels;// contactModels listesini döndürür
 		}
-
 		public IActionResult ContactReport()//contact report sayfası için bir action metodu
 		{
 			using (var workBook = new XLWorkbook())
@@ -68,7 +66,6 @@ namespace AgriculturePresentation.Controllers
 				worksheet.Cell(1, 3).Value = "Mesaj E-Posta";// 1. satır 3. sütuna Mesaj E-Posta yazıyoruz
 				worksheet.Cell(1, 4).Value = "Mesaj İçerik";// 1. satır 4. sütuna Mesaj İçerik yazıyoruz
 				worksheet.Cell(1, 5).Value = "Mesaj Tarih";// 1. satır 5. sütuna Mesaj Tarih yazıyoruz
-
 
 				int contactRowCount = 2;// 2. satırdan itibaren verileri doldurmaya başlayacağız
 				foreach (var item in ContactList())// ContactList metodundan dönen listeyi döngüye alıyoruz
@@ -86,6 +83,53 @@ namespace AgriculturePresentation.Controllers
 					workBook.SaveAs(stream);// workbook'u bellek akışına kaydediyoruz
 					var content = stream.ToArray();// bellek akışını baytlara çeviriyoruz
 					return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "MesajRaporu.xlsx");// dosyayı indiriyoruz
+				}
+			}
+		}
+
+		public List<AnnouncementModel> AnnouncementList()//contactlist sayfası için bir action metodu
+		{
+			List<AnnouncementModel> announcementModels = new List<AnnouncementModel>();
+			using (var context = new AgricultureContext())// AgricultureContext sınıfından bir context nesnesi oluşturuyoruz
+			{
+				announcementModels = context.Announcements.Select(x => new AnnouncementModel// ContactModel sınıfından bir liste oluşturuyoruz
+				{// x.ContactModel sınıfından bir nesne oluşturuyoruz
+					Id = x.Id,
+					Title = x.Title,
+					Description = x.Description,
+					Date = x.Date,
+					Status = x.Status
+				}).ToList();
+			}
+			return announcementModels;// contactModels listesini döndürür
+		}
+		public IActionResult AnnouncementReport()//contact report sayfası için bir action metodu
+		{
+			using (var workBook = new XLWorkbook())
+			{
+				/*baslıkları atandı sımdı ıse alttarafta doldurma ıslemı yapacagız*/
+				var worksheet = workBook.Worksheets.Add("Duyuru Listesi");// Contact Report adında bir çalışma sayfası ekliyoruz
+				worksheet.Cell(1, 1).Value = "Duyuru ID";// 1. satır 1. sütuna Mesaj ID yazıyoruz
+				worksheet.Cell(1, 2).Value = "Duyuru Adı";// 1. satır 2. sütuna Mesaj Adı yazıyoruz
+				worksheet.Cell(1, 3).Value = "Duyuru Açıklaması";// 1. satır 3. sütuna Mesaj E-Posta yazıyoruz
+				worksheet.Cell(1, 4).Value = "Duyuru Tarihi";// 1. satır 4. sütuna Mesaj İçerik yazıyoruz
+				worksheet.Cell(1, 5).Value = "Duyuru Durumu";// 1. satır 5. sütuna Mesaj Tarih yazıyoruz
+
+				int announcementRowCount = 2;// 2. satırdan itibaren verileri doldurmaya başlayacağız
+				foreach (var item in AnnouncementList())// ContactList metodundan dönen listeyi döngüye alıyoruz
+				{
+					worksheet.Cell(announcementRowCount, 1).Value = item.Id;
+					worksheet.Cell(announcementRowCount, 2).Value = item.Title;
+					worksheet.Cell(announcementRowCount, 3).Value = item.Description;
+					worksheet.Cell(announcementRowCount, 4).Value = item.Date;
+					worksheet.Cell(announcementRowCount, 5).Value = item.Status;
+					announcementRowCount++;// satır sayısını artırıyoruz
+				}
+				using (var stream = new MemoryStream())// bellek akışı oluşturuyoruz
+				{
+					workBook.SaveAs(stream);// workbook'u bellek akışına kaydediyoruz
+					var content = stream.ToArray();// bellek akışını baytlara çeviriyoruz
+					return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "DuyuruRaporu.xlsx");// dosyayı indiriyoruz
 				}
 			}
 		}
