@@ -10,6 +10,7 @@ using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,11 @@ builder.Services.AddScoped<IAdminService, AdminManager>();//burada announcement 
 builder.Services.AddScoped<IAdminDal, EfAdminDal>();//burada announcement dal sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IProductService, ProductManager>();//burada announcement manager sýnýfý eklenmiþ oldu
 builder.Services.AddScoped<IProductDal, EfProductDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()//IdentityUser ve IdentityRole sýnýflarýný kullanarak kimlik doðrulama iþlemlerini yapýyoruz
+    .AddEntityFrameworkStores<AgricultureContext>();//Entity Framework ile veritabaný iþlemlerini yapýyoruz
+	//.AddDefaultTokenProviders();//Varsayýlan token saðlayýcýlarýný ekliyoruz
+
 
 /*giriþ iþlem kodlarý buraya yazdýk yaný admin kullanýcýsý olmadan gýrýs yapýlmayacaktýr*/
 builder.Services.AddMvc(config =>
