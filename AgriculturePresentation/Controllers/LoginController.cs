@@ -8,16 +8,39 @@ namespace AgriculturePresentation.Controllers
 	[AllowAnonymous]/*projenın genel olarak muaf tutmasına yarar*/
 	public class LoginController : Controller
 	{
-		private readonly UserManager<IdentityUser> _userManager;
-
-		public LoginController(UserManager<IdentityUser> userManager)
+		private readonly UserManager<IdentityUser> _userManager;//kullanıcı işlemleri için UserManager sınıfını kullanıyoruz
+		private readonly SignInManager<IdentityUser> _signInManager;// giriş işlemleri için SignInManager sınıfını kullanıyoruz
+		
+		public LoginController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
 		{
 			_userManager = userManager;
+			_signInManager = signInManager;
 		}
 
-		public IActionResult Index()
+		[HttpGet]/*giriş sayfasına yönlendirme için kullanılır*/
+		public IActionResult Index()//admin view kısmıdır
 		{
 			return View();
+		}
+
+		[HttpPost]/*parametre olarak model verıp ıstenılen bılgılerın gırılmesı saglıyoruz*/
+		public async Task<IActionResult> Index(LoginViewModel loginViewModel)
+		{
+			if (ModelState.IsValid)
+			{
+				var result = await _signInManager.PasswordSignInAsync
+					(loginViewModel.userName, loginViewModel.password, false, false);/*giriş işlemi için kullanılır, false parametresi hatırlama özelliğini devre dışı bırakır*/
+				if (result.Succeeded)
+				{
+					return RedirectToAction("Index", "Dashboard");/*giriş başarılı ise anasayfaya yönlendirir*/
+				}
+				else
+				{
+					return RedirectToAction("Index");/*giriş başarısız ise anasayfaya yönlendirir*/
+					//	ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Hatalı!");/*eğer giriş başarısız ise hata mesajı gösterir*/;/*eğer giriş başarılı ise*/
+				}
+			}
+			return View();/*model geçerli değilse tekrar giriş sayfasını gösterir*/
 		}
 
 		[HttpGet]
@@ -52,5 +75,13 @@ namespace AgriculturePresentation.Controllers
 			}
 			return View(registerViewModel);
 		}
+
+		[HttpGet]
+		public async Task<IActionResult> LogOut()
+		{
+			await _signInManager.SignOutAsync(); // Oturumu kapat
+			return RedirectToAction("Index", "Login"); // Login sayfasına yönlendir
+		}
+
 	}
 }

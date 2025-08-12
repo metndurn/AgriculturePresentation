@@ -1,5 +1,6 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.Container;
 using BusinessLayer.ValidationRules;
 using DataAccesLayer.Abstract;
 using DataAccesLayer.Concrete.EntityFramework;
@@ -18,27 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IServiceService, ServiceManager>();//burada service manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IServiceDal, EfServiceDal>();//burada service dal sýnýfý eklenmiþ oldu
-builder.Services.AddDbContext<AgricultureContext>();//bununla birlikte context sýnýfý da eklenmiþ oldu.
-builder.Services.AddScoped<ITeamService, TeamManager>();//burada team manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<ITeamDal, EfTeamDal>();//burada team dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IImageService, ImageManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IImageDal, EfImageDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAddressService, AddressManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAddressDal, EfAddressDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IContactService, ContactManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IContactDal, EfContactDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAboutService, AboutManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAboutDal, EfAboutDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAdminService, AdminManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IAdminDal, EfAdminDal>();//burada announcement dal sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IProductService, ProductManager>();//burada announcement manager sýnýfý eklenmiþ oldu
-builder.Services.AddScoped<IProductDal, EfProductDal>();//burada announcement dal sýnýfý eklenmiþ oldu
+builder.Services.ContainerDependencies();//burasý BusinessLayer.Container sýnýfýndan gelen ContainerDependencies metodunu çaðýrýyoruz. Bu metod, baðýmlýlýklarý ekler ve uygulamanýn servislerini yapýlandýrýr.
+
+//baska býr class ýcýne aktardýk ve orada bagýmlýlýklarý ekledýk
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()//IdentityUser ve IdentityRole sýnýflarýný kullanarak kimlik doðrulama iþlemlerini yapýyoruz
     .AddEntityFrameworkStores<AgricultureContext>();//Entity Framework ile veritabaný iþlemlerini yapýyoruz
@@ -80,7 +63,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+//app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
